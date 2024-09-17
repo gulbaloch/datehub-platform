@@ -1,0 +1,47 @@
+{% load static tailwind_tags %} 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    {%tailwind_css%}
+</head>
+  <body class="overflow-x-hidden">
+    <main class="min-h-screen w-full flex flex-col items-center justify-start bg-gray-100">
+      <!-- Top Navbar -->
+      <nav class="bg-orange-200 h-16 w-full flex justify-between items-center px-5">
+        <h2 class="text-3xl font-bold">DateHub</h2>
+        <div class="flex space-x-4 md:space-x-8">
+          <i class="ri-search-line text-2xl md:text-4xl p-2"></i>
+          <i class="ri-account-circle-line text-2xl md:text-4xl p-2"></i>
+        </div>
+      </nav>
+
+  
+
+      <!-- Account Form Container -->
+      <div class="w-11/12 md:w-2/5 p-5 mt-5 bg-white rounded-lg shadow-lg">
+        <h2 class="text-xl md:text-2xl mb-5">Create New Customer Account</h2>
+        <form class="flex flex-col gap-5">
+          <div>
+            <label for="name" class="text-base md:text-lg">Name</label>
+            <input type="text" id="name" class="w-full h-10 md:h-12 p-3 border border-gray-300 rounded-md mt-2" />
+          </div>
+          <div>
+            <label for="email" class="text-base md:text-lg">Email</label>
+            <input type="email" id="email" class="w-full h-10 md:h-12 p-3 border border-gray-300 rounded-md mt-2" />
+          </div>
+          <div>
+            <label for="password" class="text-base md:text-lg">Password</label>
+            <input type="password" id="password" class="w-full h-10 md:h-12 p-3 border border-gray-300 rounded-md mt-2" />
+          </div>
+          <button type="submit" class="w-full h-10 md:h-12 bg-yellow-400 text-white rounded-md transition-colors duration-300 hover:bg-yellow-300">
+            Create Account
+          </button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

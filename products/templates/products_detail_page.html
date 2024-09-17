@@ -1,0 +1,177 @@
+{% load static %} {% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+
+    {% tailwind_css %}
+  </head>
+  <body class="overflow-x-hidden">
+    <div class="min-h-screen">
+      <nav class="w-full bg-[#FFCE8E] h-14 flex items-center justify-between">
+        <h1 class="text-2xl font-bold pl-4">DateHub</h1>
+        <ul class="hidden sm:flex gap-7 mx-auto">
+          <li class="text-black cursor-pointer">Home</li>
+          <li class="text-black cursor-pointer">Shops</li>
+          <li class="text-black cursor-pointer">Products</li>
+          <li class="text-black cursor-pointer">Contact</li>
+        </ul>
+        <div class="sm:hidden pr-4">
+          <button id="menuToggle" class="text-black">Menu</button>
+        </div>
+      </nav>
+
+      <!-- Responsive Menu for mobile -->
+      <div id="mobileMenu" class="hidden bg-[#FFCE8E] sm:hidden">
+        <ul class="flex flex-col text-center py-2">
+          <li class="text-black cursor-pointer py-2">Home</li>
+          <li class="text-black cursor-pointer py-2">Shops</li>
+          <li class="text-black cursor-pointer py-2">Products</li>
+          <li class="text-black cursor-pointer py-2">Contact</li>
+        </ul>
+      </div>
+
+      <div class="h-full w-full flex flex-col lg:flex-row">
+        <div
+          class="image flex-grow lg:w-1/2 w-full flex justify-center items-center flex-col"
+        >
+          <img
+            id="img"
+            src="https://cdn.pixabay.com/photo/2021/09/19/19/18/dates-6638825_1280.jpg"
+            alt="Dates"
+            class="w-[300px] h-[250px] md:w-[400px] md:h-[350px] lg:w-[500px] lg:h-[400px] object-cover mt-9"
+          />
+
+          <div class="products-image flex gap-2 mt-3">
+            <img
+              onmouseover="change_img()"
+              onmouseleave="privace_img()"
+              src="https://cdn.pixabay.com/photo/2021/01/22/06/44/dates-5939307_1280.jpg"
+              alt="Dates Thumbnail 1"
+              class="w-24 h-20 md:w-28 md:h-24 lg:w-32 lg:h-28 object-cover"
+            />
+            <img
+              onmouseover="change_img2()"
+              onmouseleave="privace_img2()"
+              src="https://cdn.pixabay.com/photo/2016/06/13/17/51/palma-1454793_1280.jpg"
+              alt="Dates Thumbnail 2"
+              class="w-24 h-20 md:w-28 md:h-24 lg:w-32 lg:h-28 object-cover"
+            />
+            <img
+              src="https://cdn.pixabay.com/photo/2021/09/19/19/18/dates-6638825_1280.jpg"
+              alt="Dates Thumbnail 3"
+              class="w-24 h-20 md:w-28 md:h-24 lg:w-32 lg:h-28 object-cover"
+            />
+          </div>
+        </div>
+
+        <div
+          class="pricing flex-grow lg:w-1/2 w-full flex justify-center items-center px-4 lg:px-0"
+        >
+          <div
+            class="p-4 max-w-md h-auto bg-white shadow-md rounded-md"
+            id="product-detail"
+          >
+            <h1 class="text-xl md:text-2xl font-bold mb-2">Majdool</h1>
+
+            <div class="mb-4 flex justify-between">
+              <span class="text-lg font-medium">Price:</span>
+              <p class="text-xl font-semibold text-[#F7B359]">$20.00</p>
+            </div>
+
+            <div class="mb-4">
+              <p class="text-gray-700 text-justify">
+                Product Description will start here. This is where you can give
+                details about the Majdool dates, their quality, benefits, etc.
+              </p>
+            </div>
+
+            <div class="flex items-center mb-4">
+              <label for="quantity" class="mr-2 text-gray-700 font-medium"
+                >Quantity:</label
+              >
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+                class="w-20 h-9 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300"
+              />
+            </div>
+
+            <div class="add_button">
+              <button
+                class="bg-orange-500 hover:bg-orange-700 text-white font-semibold w-full py-2 rounded-md"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer id="footer" class="bg-[#FFCE8E] text-black mt-10 pt-8 pb-4">
+        <div
+          class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4"
+        >
+          <div class="about-us">
+            <h3 class="text-xl font-bold mb-2">About Us</h3>
+            <p class="text-sm">
+              DateHub is your ultimate platform for finding and purchasing the
+              finest dates. Our mission is to deliver the best quality to your
+              doorstep.
+            </p>
+          </div>
+          <div class="quick-links">
+            <h3 class="text-xl font-bold mb-2">Quick Links</h3>
+            <ul>
+              <li
+                class="cursor-pointer hover:text-orange-500 transition duration-300"
+              >
+                Home
+              </li>
+              <li
+                class="cursor-pointer hover:text-orange-500 transition duration-300"
+              >
+                Shops
+              </li>
+              <li
+                class="cursor-pointer hover:text-orange-500 transition duration-300"
+              >
+                Products
+              </li>
+              <li
+                class="cursor-pointer hover:text-orange-500 transition duration-300"
+              >
+                Contact
+              </li>
+            </ul>
+          </div>
+          <div class="contact-us">
+            <h3 class="text-xl font-bold mb-2">Contact Us</h3>
+            <p class="text-sm">Email: support@datehub.com</p>
+            <p class="text-sm">Phone: +123 456 7890</p>
+            <p class="text-sm">Address: 123 Date Street, Date City</p>
+          </div>
+        </div>
+        <div class="text-center mt-4 text-sm">
+          © 2024 DateHub. All rights reserved.
+        </div>
+      </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+    <script src="{% static 'javascript/script.js' %}"></script>
+  </body>
+</html>
