@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home_page',
     'accounts',
+    'static_pages',
+    'products',
     'tailwind',
     'theme',
 ]
@@ -64,7 +66,7 @@ ROOT_URLCONF = 'dateHub_Web_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+           'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
