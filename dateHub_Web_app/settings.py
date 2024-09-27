@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'home_page',
     'accounts',
     'static_pages',
+    'cart',
     'products',
     'tailwind',
     'theme',
