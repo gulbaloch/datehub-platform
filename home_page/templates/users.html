@@ -1,6 +1,71 @@
-<p>{{ stores.store_id }}</p>
-<h1>{{ user.name }}</h1>
-<p>{{ user.last_name }}</p>
-<p>{{ user.password }}</p>
-<p>{{ user.date_of_join}}</p>
-<img src="{{ user.profile_image.url }}" alt="{{ user.name }}">
+{% load static tailwind_tags %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    {% tailwind_css %}
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold text-center mb-6">User Profile</h1>
+
+        <!-- Django form begins here -->
+        <form method="POST" enctype="multipart/form-data" class="space-y-4">
+            {% csrf_token %}
+            
+            <!-- Form fields -->
+            <div class="form-group">
+                {{ form.user_id.label_tag }}
+                {{ form.user_id|add_class:"w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" }}
+            </div>
+
+            <div class="form-group">
+                {{ form.name.label_tag }}
+                {{ form.name|add_class:"w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" }}
+            </div>
+
+            <div class="form-group">
+                {{ form.last_name.label_tag }}
+                {{ form.last_name|add_class:"w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" }}
+            </div>
+
+            <div class="form-group">
+                {{ form.email.label_tag }}
+                {{ form.email|add_class:"w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" }}
+            </div>
+
+            <div class="form-group">
+                {{ form.password.label_tag }}
+                {{ form.password|add_class:"w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" }}
+            </div>
+
+            <div class="form-group">
+                {{ form.confirm_password.label_tag }}
+                {{ form.confirm_password|add_class:"w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" }}
+            
+                {% if form.confirm_password.errors %}
+                    <div class="text-red-500">{{ form.confirm_password.errors }}</div>
+                {% endif %}
+            </div>
+    
+            
+            <div class="form-group">
+                {{ form.profile_image.label_tag }}
+                {{ form.profile_image|add_class:"w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" }}
+            </div>
+
+            <div class="form-group">
+                {{ form.date_of_join.label_tag }}
+                {{ form.date_of_join|add_class:"w-full p-3 border border-gray-300 rounded-lg bg-gray-100" }}
+            </div>
+            
+
+            <button type="submit" class="w-full bg-orange-500 text-white py-3 rounded-lg hover:bg-orange-600 transition-colors duration-200">Submit</button>
+        </form>
+        <!-- End of Django form -->
+    </div>
+</body>
+</html>
