@@ -34,18 +34,17 @@ class Products(models.Model):
 
 
 class Review(models.Model):
-    review_id = models.AutoField(primary_key=True)  # AutoField for review_id
-    rating = models.IntegerField()  # Integer for rating
+    review_id = models.AutoField(primary_key=True)  # ? AutoField for review_id 
+    rating = models.IntegerField()                   # todos: Integer for rating
     review_text = models.CharField(max_length=500)
-    review_date = models.DateField(auto_now_add=True)  # Auto set the date when the review is created
-    product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='reviews')  # Link reviews to products
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews')  # The user who wrote the review
-
+    review_date = models.DateField(auto_now_add=True)  #! Auto set the date when the review is created
+    product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='reviews')  # !Link reviews to products
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews') 
     def __str__(self):
         return f"Review by {self.user.name} on {self.product.product_name}"
 
 
-class ShoppingCart(models.Model):  # Use camel case for model names
+class ShoppingCart(models.Model):  
     cart_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='shopping_cart')
     products = models.ManyToManyField(Products, related_name='carts')  # A cart can have many products
