@@ -16,4 +16,17 @@ def registration(request):
     return render(request, 'register.html', {'form': form})  # Make sure to return the response
 
 def login(request):
+
+    if request.method=='POST':
+        username = request.POST['username']
+        password = request.POST['password1']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home_page/index')
+        else:
+            messages.error(request, 'Invalid username or password')
+            return render(request, 'login.html')
+
+
     return render(request,'login.html')

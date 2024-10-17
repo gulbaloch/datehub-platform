@@ -8,7 +8,7 @@ def User_profile(request):
         form = User_forms(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect("successful")
+            return redirect('users')
     else:
         form = User_forms()
 
